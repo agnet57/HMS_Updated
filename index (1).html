@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container" id="login">
+        <header>
+            <!-- Placeholder Logo -->
+            <img src="https://marketplace.canva.com/EAGKU6t2llU/2/0/1600w/canva-blue-green-white-simple-modern-medical-logo-enoKffV7vWg.jpg" alt="Hospital Logo" class="logo">
+            <h1>Hospital Management System</h1>
+        </header>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="userId">User ID (min 8 chars)</label>
+                <input type="text" id="userId" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (min 10 chars, 1 upper, 1 num, 1 special)</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p id="loginMessage" class="message"></p>
+        </form>
+    </div>
+
+    <div class="container" id="dashboard">
+        <h1>Admission Desk Dashboard</h1>
+        <button id="logoutBtn" onclick="logout()">Logout</button>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('manage')">Manage Patients</button>
+            <button class="tab-button" onclick="openTab('search')">Search Patient</button>
+            <button class="tab-button" onclick="openTab('billing')">Billing</button>
+        </div>
+
+        <!-- Manage Patients Tab -->
+        <div id="manage" class="tab active">
+            <h2>Add/Edit Patient</h2>
+            <form id="patientForm">
+                <div class="form-group">
+                    <label for="patientId">Patient ID</label>
+                    <input type="text" id="patientId" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientName">Name</label>
+                    <input type="text" id="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomNumber">Room Number</label>
+                    <input type="text" id="roomNumber" required>
+                </div>
+                <button type="submit">Add Patient</button>
+                <button type="button" onclick="deletePatient()">Delete Patient</button>
+            </form>
+            <h2>Active Patients</h2>
+            <table id="patientTable">
+                <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Room Number</th>
+                    </tr>
+                </thead>
+                <tbody id="patientList"></tbody>
+            </table>
+            <p id="manageMessage" class="message"></p>
+        </div>
+
+        <!-- Search Patient Tab -->
+        <div id="search" class="tab">
+            <h2>Search Patient</h2>
+            <div class="form-group">
+                <label for="searchId">Patient ID</label>
+                <input type="text" id="searchId" required>
+            </div>
+            <button onclick="searchPatient()">Search</button>
+            <p id="searchResult" class="message"></p>
+        </div>
+
+        <!-- Billing Tab -->
+        <div id="billing" class="tab">
+            <h2>Generate Bill</h2>
+            <div class="form-group">
+                <label for="billId">Patient ID</label>
+                <input type="text" id="billId" required>
+            </div>
+            <button onclick="generateBill()">Generate Bill</button>
+            <p id="billResult" class="message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
